@@ -1,10 +1,4 @@
-// "Baza" korisnika u localStorage (demo)
-function getUsers() {
-  return JSON.parse(localStorage.getItem('users') || '[]');
-}
-function saveUsers(users) {
-  localStorage.setItem('users', JSON.stringify(users));
-}
+
 
 // --- Firebase inicijalizacija ---
 const firebaseConfig = {
@@ -55,7 +49,7 @@ document.getElementById('toggle-password').onclick = function() {
 };
 document.getElementById('eye-icon').textContent = "👁️";
 
-// Registracija
+// Registracija (samo email i lozinka)
 document.getElementById('register-form').onsubmit = function(e) {
   e.preventDefault();
   const email = document.getElementById('register-email').value.trim();
@@ -74,7 +68,7 @@ document.getElementById('register-form').onsubmit = function(e) {
     });
 };
 
-// Prijava
+// Prijava (email i lozinka)
 document.getElementById('login-form').onsubmit = function(e) {
   e.preventDefault();
   const email = document.getElementById('login-username').value.trim();
