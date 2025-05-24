@@ -1,5 +1,3 @@
-
-
 // --- Firebase inicijalizacija ---
 const firebaseConfig = {
   apiKey: "AIzaSyDYwAIQ3nHI4CV0BxVXwHD0SaB6ySxWEj8",
@@ -56,11 +54,14 @@ document.getElementById('register-form').onsubmit = function(e) {
   const password = document.getElementById('register-password').value;
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(() => {
-      document.getElementById('register-message').style.color = "#2ecc71";
-      document.getElementById('register-message').textContent = "Registracija uspješna! Možete se prijaviti.";
-      setTimeout(() => {
-        document.getElementById('register-modal').style.display = 'none';
-      }, 1200);
+      // Odmah odjavi korisnika nakon registracije
+      firebase.auth().signOut().then(() => {
+        document.getElementById('register-message').style.color = "#2ecc71";
+        document.getElementById('register-message').textContent = "Registracija uspješna! Prijavite se.";
+        setTimeout(() => {
+          document.getElementById('register-modal').style.display = 'none';
+        }, 1200);
+      });
     })
     .catch(err => {
       document.getElementById('register-message').style.color = "#d7263d";
