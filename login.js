@@ -88,8 +88,4 @@ document.getElementById('login-form').onsubmit = function(e) {
     });
 };
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    window.location.href = "main/main.html";
-  }
-});
+
