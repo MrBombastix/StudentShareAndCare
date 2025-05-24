@@ -79,13 +79,17 @@
     <form id="register-form" autocomplete="off">
       <h2>Registracija</h2>
       <input type="text" id="register-username" placeholder="Korisničko ime" required>
-      <input type="email" id="register-email" placeholder="Email" required>
+      <input type="email" id="login-username" placeholder="Email" required>
       <input type="password" id="register-password" placeholder="Lozinka" required>
       <button type="submit">Registriraj se</button>
       <div id="register-message"></div>
       <button type="button" id="close-register" style="margin-top:10px;">Zatvori</button>
     </form>
   </div>
+
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 
   <script src="login.js"></script>
 </body>
