@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="../circles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 	<script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 </head>
 <body>
     <!-- Dekorativni krugovi -->
@@ -97,5 +99,20 @@
     </footer>
 
     <script src="main.js"></script>
+	<script>
+	const firebaseConfig = {
+	  apiKey: "AIzaSyDYwAIQ3nHI4CV0BxVXwHD0SaB6ySxWEj8",
+	  authDomain: "studentshareandcare.firebaseapp.com",
+	  projectId: "studentshareandcare",
+	  storageBucket: "studentshareandcare.appspot.com",
+	  messagingSenderId: "5133800080",
+	  appId: "1:5133800080:web:87d97e229027264873be15",
+	  measurementId: "G-1MDDHHDWHE"
+	};
+	firebase.initializeApp(firebaseConfig);
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (!user) window.location.href = "../index.html";
+	});
+	</script>
 </body>
 </html>
