@@ -92,3 +92,9 @@ document.getElementById('login-form').onsubmit = function(e) {
       document.getElementById('login-message').textContent = "Neispravan email ili lozinka!";
     });
 };
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    window.location.href = "main/main.html";
+  }
+});
