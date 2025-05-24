@@ -61,7 +61,7 @@
   <div id="login-modal" style="display:none;">
     <form id="login-form" autocomplete="off">
       <h2>Prijava</h2>
-      <input type="text" id="login-username" placeholder="Korisničko ime" required>
+      <input type="email" id="login-username" placeholder="Email" required>
       <div class="password-wrapper">
         <input type="password" id="login-password" placeholder="Lozinka" required>
         <button type="button" id="toggle-password" aria-label="Prikaži lozinku" tabindex="-1">
@@ -74,12 +74,11 @@
     </form>
   </div>
 
-  <!-- Registracija forma (nova) -->
+  <!-- Registracija forma -->
   <div id="register-modal" style="display:none;">
     <form id="register-form" autocomplete="off">
       <h2>Registracija</h2>
-      <input type="text" id="register-username" placeholder="Korisničko ime" required>
-      <input type="email" id="login-username" placeholder="Email" required>
+      <input type="email" id="register-email" placeholder="Email" required>
       <input type="password" id="register-password" placeholder="Lozinka" required>
       <button type="submit">Registriraj se</button>
       <div id="register-message"></div>
