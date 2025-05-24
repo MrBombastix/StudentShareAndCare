@@ -6,6 +6,19 @@ function saveUsers(users) {
   localStorage.setItem('users', JSON.stringify(users));
 }
 
+// --- Firebase inicijalizacija ---
+const firebaseConfig = {
+  apiKey: "AIzaSyDYwAIQ3nHI4CV0BxVXwHD0SaB6ySxWEj8",
+  authDomain: "studentshareandcare.firebaseapp.com",
+  projectId: "studentshareandcare",
+  storageBucket: "studentshareandcare.appspot.com",
+  messagingSenderId: "5133800080",
+  appId: "1:5133800080:web:87d97e229027264873be15",
+  measurementId: "G-1MDDHHDWHE"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
 // Otvori/zatvori login modal
 document.getElementById('login').onclick = function() {
   document.getElementById('login-modal').style.display = 'flex';
@@ -45,39 +58,37 @@ document.getElementById('eye-icon').textContent = "👁️";
 // Registracija
 document.getElementById('register-form').onsubmit = function(e) {
   e.preventDefault();
-  const username = document.getElementById('register-username').value.trim();
   const email = document.getElementById('register-email').value.trim();
   const password = document.getElementById('register-password').value;
-  let users = getUsers();
-  if (users.find(u => u.username === username)) {
-    document.getElementById('register-message').style.color = "#d7263d";
-    document.getElementById('register-message').textContent = "Korisničko ime već postoji!";
-    return;
-  }
-  users.push({ username, email, password });
-  saveUsers(users);
-  document.getElementById('register-message').style.color = "#2ecc71";
-  document.getElementById('register-message').textContent = "Registracija uspješna! Možete se prijaviti.";
-  setTimeout(() => {
-    document.getElementById('register-modal').style.display = 'none';
-  }, 1200);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      document.getElementById('register-message').style.color = "#2ecc71";
+      document.getElementById('register-message').textContent = "Registracija uspješna! Možete se prijaviti.";
+      setTimeout(() => {
+        document.getElementById('register-modal').style.display = 'none';
+      }, 1200);
+    })
+    .catch(err => {
+      document.getElementById('register-message').style.color = "#d7263d";
+      document.getElementById('register-message').textContent = err.message;
+    });
 };
 
 // Prijava
 document.getElementById('login-form').onsubmit = function(e) {
   e.preventDefault();
-  const user = document.getElementById('login-username').value.trim();
-  const pass = document.getElementById('login-password').value;
-  let users = getUsers();
-  const found = users.find(u => u.username === user && u.password === pass);
-  if (found) {
-    document.getElementById('login-message').style.color = "#2ecc71";
-    document.getElementById('login-message').textContent = "Uspješna prijava!";
-    setTimeout(() => {
-      window.location.href = "main/main.html";
-    }, 1200);
-  } else {
-    document.getElementById('login-message').style.color = "#d7263d";
-    document.getElementById('login-message').textContent = "Neispravno korisničko ime ili lozinka!";
-  }
+  const email = document.getElementById('login-username').value.trim();
+  const password = document.getElementById('login-password').value;
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(() => {
+      document.getElementById('login-message').style.color = "#2ecc71";
+      document.getElementById('login-message').textContent = "Uspješna prijava!";
+      setTimeout(() => {
+        window.location.href = "main/main.html";
+      }, 1200);
+    })
+    .catch(err => {
+      document.getElementById('login-message').style.color = "#d7263d";
+      document.getElementById('login-message').textContent = "Neispravan email ili lozinka!";
+    });
 };
