@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>StudentShare&Care - Geolokacija</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../circles.css">
+    <link rel="stylesheet" href="geolocation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Dekorativni krugovi -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+    <div class="circle circle4"></div>
+    <div class="circle circle5"></div>
+
+    <!-- Sticky kontrole -->
+    <button class="sticky-btn left-btn" id="menu-btn" aria-label="Izbornik" style="padding:22px 30px;">
+        <img src="../svg/menu.svg" alt="Izbornik" style="width:28px; height:28px;">
+    </button>
+    <button class="sticky-btn right-btn" id="notifications-btn" style="padding:22px 30px;">
+        <img src="../svg/bells.svg" style="width:28px; height:28px;"><span class="badge">3</span>
+    </button>
+
+    <!-- Notifikacijski dropdown -->
+    <div class="notif-dropdown" id="notif-dropdown">
+        <ul>
+            <li>Nova poruka od Ivana</li>
+            <li>Novi komentar na vaš oglas</li>
+            <li>Sustavna obavijest</li>
+        </ul>
+    </div>
+
+    <!-- Side menu -->
+    <div class="side-menu" id="side-menu">
+        <div class="side-menu-decor"></div>
+        <button id="close-menu">×</button>
+        <!-- Slika korisnika -->
+        <img src="../pictures/cura_pise.png" alt="Profilna slika" class="side-menu-avatar" style="width: 92px; height: 92px; border-radius: 50%; object-fit: cover; margin: 32px auto 0 auto; display: block; box-shadow: 0 2px 12px 0 rgba(64,99,199,0.10);">
+        <div class="side-menu-greeting">Dobrodošli, Korisnik!</div>
+        <ul>
+            <li><a href="#"><img src="../svg/user.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Moj profil</a></li>
+            <li><a href="#"><img src="../svg/list-check.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Moji oglasi</a></li>
+            <li><a href="#"><img src="../svg/settings.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Postavke</a></li>
+            <li><a href="geolocation.html"><img src="../svg/marker.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Geolokacija</a></li>
+            <li><button class="logout-btn" id="logout-btn"><img src="../svg/user-logout.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Odjava</button></li>
+        </ul>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo-bar">
+        <a href="main.html">
+            <img src="../pictures/logo.png" alt="Student Share&Care" class="main-logo-header">
+        </a>
+    </div>
+
+    <!-- Glavni sadržaj -->
+    <div class="geo-wrapper" style="max-width: 600px; margin: 40px auto 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 3px 14px 0 rgba(64,99,199,0.12); padding: 36px 32px 32px 32px; text-align: center;">
+        <h2 style="color:#4063c7; margin-bottom: 18px;">Vaša geolokacija</h2>
+        <p>Ovdje možete prikazati svoju trenutnu lokaciju na karti i vidjeti koordinate.</p>
+        <button id="get-location-btn" style="margin: 24px 0 18px 0; background: #e0e7ff; color: #25408f; border: 2px solid #4063c7; border-radius: 14px; font-weight: 600; font-size: 1.1rem; padding: 14px 36px; cursor: pointer; box-shadow: 0 3px 14px 0 rgba(64,99,199,0.18); transition: background-color 0.3s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;">Prikaži moju lokaciju</button>
+        <div id="geo-status" style="margin-bottom: 18px; color: #d7263d;"></div>
+        <div id="geo-coords" style="font-size: 1.1rem; color: #4063c7; margin-bottom: 18px;"></div>
+        <div id="geo-map" style="width:100%; height:320px; border-radius: 12px; overflow: hidden; background: #e7edfa; display:none;"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Projekt RUP - Sva prava pridržana</p>
+    </footer>
+
+    <script>
+    // Side menu funkcionalnost
+    document.getElementById('menu-btn').onclick = function() {
+        document.getElementById('side-menu').classList.add('open');
+    };
+    document.getElementById('close-menu').onclick = function() {
+        document.getElementById('side-menu').classList.remove('open');
+    };
+
+    // Notifikacije funkcionalnost
+    const notifBtn = document.getElementById('notifications-btn');
+    const notifDropdown = document.getElementById('notif-dropdown');
+    notifBtn.onclick = function(e) {
+        e.stopPropagation();
+        notifDropdown.classList.toggle('show');
+    };
+    document.addEventListener('click', function(e) {
+        if (!notifDropdown.contains(e.target) && !notifBtn.contains(e.target)) {
+            notifDropdown.classList.remove('show');
+        }
+    });
+
+    // Geolokacija funkcionalnost
+    const btn = document.getElementById('get-location-btn');
+    const status = document.getElementById('geo-status');
+    const coords = document.getElementById('geo-coords');
+    const mapDiv = document.getElementById('geo-map');
+
+    btn.onclick = function() {
+        status.textContent = '';
+        coords.textContent = '';
+        mapDiv.style.display = 'none';
+        if (!navigator.geolocation) {
+            status.textContent = 'Geolokacija nije podržana u vašem pregledniku.';
+            return;
+        }
+        status.textContent = 'Dohvaćam lokaciju...';
+        navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true});
+    };
+
+    function success(position) {
+        status.textContent = '';
+        const latitudeNum  = position.coords.latitude;
+        const longitudeNum = position.coords.longitude;
+        const latitude  = latitudeNum.toFixed(6);
+        const longitude = longitudeNum.toFixed(6);
+        coords.innerHTML = `<b>Širina:</b> ${latitude}<br><b>Dužina:</b> ${longitude}`;
+        // Prikaz karte (OpenStreetMap iframe)
+        const bbox = [
+            (longitudeNum - 0.01).toFixed(6), // minLon
+            (latitudeNum - 0.01).toFixed(6),  // minLat
+            (longitudeNum + 0.01).toFixed(6), // maxLon
+            (latitudeNum + 0.01).toFixed(6)   // maxLat
+        ];
+        // OpenStreetMap expects bbox as: minLon,minLat,maxLon,maxLat
+        const bboxStr = [bbox[0], bbox[1], bbox[2], bbox[3]].join(',');
+        const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${bboxStr}&layer=mapnik&marker=${latitude},${longitude}`;
+        mapDiv.innerHTML = `<iframe width="100%" height="320" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="${mapUrl}" style="border-radius:12px;"></iframe>`;
+        mapDiv.style.display = 'block';
+    }
+
+    function error(err) {
+        status.textContent = 'Ne mogu dohvatiti lokaciju. Provjerite dopuštenja preglednika.';
+    }
+    </script>
+</body>
+</html>
