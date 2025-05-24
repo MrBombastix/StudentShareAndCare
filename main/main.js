@@ -12,7 +12,9 @@ if (menuBtn && sideMenu && closeMenu) {
 const logoutBtn = document.getElementById('logout-btn');
 if (logoutBtn) {
     logoutBtn.onclick = () => {
-        window.location.href = "../index.html";
+        firebase.auth().signOut().then(function() {
+            window.location.href = "../index.html";
+        });
     };
 }
 
@@ -136,3 +138,13 @@ if (newAdBtn) {
         // Ovdje otvori modal ili preusmjeri na stranicu za unos novog oglasa
     };
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // user.email ili user.displayName
+    document.querySelector('.side-menu-greeting').textContent = "Dobrodošli, " + (user.email || "Korisnik") + "!";
+  } else {
+    // Ako nije prijavljen, preusmjeri na login
+    window.location.href = "../index.html";
+  }
+});
