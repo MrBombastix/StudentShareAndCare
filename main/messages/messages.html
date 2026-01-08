@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poruke | Student Share&Care</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="messages.css">
+    <link rel="stylesheet" href="../../circles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body id="main-body" style="display:none;">
+    <!-- Dekorativni krugovi -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+    <div class="circle circle4"></div>
+    <div class="circle circle5"></div>
+
+    <!-- Sticky kontrole -->
+    <button class="sticky-btn left-btn" id="menu-btn" aria-label="Izbornik">
+        <img src="../../svg/menu.svg" alt="Izbornik" width="28" height="28">
+    </button>
+    <button class="sticky-btn right-btn" id="notifications-btn" aria-label="Obavijesti">
+        <img src="../../svg/bells.svg" alt="Obavijesti" width="28" height="28">
+        <span class="badge">3</span>
+    </button>
+    <!-- Notifikacijski dropdown -->
+    <div class="notif-dropdown" id="notif-dropdown">
+        <ul>
+            <li>Nova poruka od Ivana</li>
+            <li>Novi komentar na vaš oglas</li>
+            <li>Sustavna obavijest</li>
+        </ul>
+    </div>
+    <!-- Side menu -->
+    <div class="side-menu" id="side-menu">
+        <div class="side-menu-decor"></div>
+        <button id="close-menu">×</button>
+        <img src="../../svg/user_question.svg" alt="Profilna slika" class="side-menu-avatar">
+        <div class="side-menu-greeting">Dobrodošli, Korisnik!</div>
+        <ul>
+            <li><a href="../profile/profile.html"><img src="../../svg/user.svg" alt="" width="20"> Moj profil</a></li>
+            <li><a href="../ads/ads.html"><img src="../../svg/list-check.svg" alt="" width="20"> Moji oglasi</a></li>
+            <li><a href="messages.html"><img src="../../svg/messages.svg" alt="Poruke" width="20"> Poruke</a></li>
+            <li><a href="../settings/settings.html"><img src="../../svg/settings.svg" alt="" width="20"> Postavke</a></li>
+            <li><a href="../geolocation.html"><img src="../../svg/marker.svg" alt="" width="20"> Geolokacija</a></li>
+            <li><button class="logout-btn" id="logout-btn"><img src="../../svg/user-logout.svg" alt="" width="20"> Odjava</button></li>
+        </ul>
+    </div>
+
+    <!-- Logo bar -->
+    <div class="logo-bar">
+        <a href="../main.html">
+            <img src="../../pictures/logo.png" alt="Student Share&Care" class="main-logo-header">
+        </a>
+    </div>
+
+    <!-- Glavni sadržaj poruka -->
+    <main class="messages-main">
+        <h1 class="messages-title">Poruke</h1>
+        <div class="messages-placeholder">
+            <p>Ovdje će se prikazivati vaše poruke i razgovori s drugim studentima.</p>
+            <p style="color:#4063c7;">(Funkcionalnost slanja i primanja poruka dolazi uskoro!)</p>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Projekt RUP - Sva prava pridržana | Bešker, Rozić, Hodžić, Carić, Vidović</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="messages.js"></script>
+</body>
+</html>

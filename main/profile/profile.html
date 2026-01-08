@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil | Student Share&Care</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="../../circles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body id="main-body" style="display:none;">
+    <!-- Dekorativni krugovi -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+    <div class="circle circle4"></div>
+    <div class="circle circle5"></div>
+
+    <!-- Sticky kontrole -->
+    <button class="sticky-btn left-btn" id="menu-btn" aria-label="Izbornik">
+        <img src="../../svg/menu.svg" alt="Izbornik" width="28" height="28">
+    </button>
+    <button class="sticky-btn right-btn" id="notifications-btn">
+        <img src="../../svg/bells.svg" alt="Obavijesti" width="28" height="28">
+        <span class="badge">3</span>
+    </button>
+    <!-- Notifikacijski dropdown -->
+    <div class="notif-dropdown" id="notif-dropdown">
+        <ul>
+            <li>Nova poruka od Ivana</li>
+            <li>Novi komentar na vaš oglas</li>
+            <li>Sustavna obavijest</li>
+        </ul>
+    </div>
+    <!-- Side menu -->
+    <div class="side-menu" id="side-menu">
+        <div class="side-menu-decor"></div>
+        <button id="close-menu">×</button>
+        <img src="../../svg/user_question.svg" alt="Profilna slika" class="side-menu-avatar" style="aspect-ratio:1/1;object-fit:cover;">
+        <div class="side-menu-greeting">Dobrodošli, Korisnik!</div>
+        <ul>
+            <li><a href="profile.html"><img src="../../svg/user.svg" alt="" width="20"> Moj profil</a></li>
+            <li><a href="../ads/ads.html"><img src="../../svg/list-check.svg" alt="" width="20"> Moji oglasi</a></li>
+            <li><a href="../messages/messages.html"><img src="../../svg/messages.svg" alt="Poruke" width="20"> Poruke</a></li>
+            <li><a href="../settings/settings.html"><img src="../../svg/settings.svg" alt="" width="20"> Postavke</a></li>
+            <li><a href="../geolocation.html"><img src="../../svg/marker.svg" alt="" width="20"> Geolokacija</a></li>
+            <li><button class="logout-btn" id="logout-btn"><img src="../../svg/user-logout.svg" alt="" width="20"> Odjava</button></li>
+        </ul>
+    </div>
+
+    <!-- Profil kartica -->
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-avatar-section">
+                <img src="../../svg/user_question.svg" alt="Profilna slika" class="profile-avatar" id="profile-avatar-img" style="aspect-ratio:1/1;object-fit:cover;">
+                <input type="file" id="avatar-upload" accept="image/*" style="display:none">
+                <button class="edit-avatar-btn" id="edit-avatar-btn" title="Promijeni sliku" type="button">
+                    <span style="font-size:1.7em;line-height:1;display:flex;align-items:center;justify-content:center;">+</span>
+                </button>
+            </div>
+            <h2 id="profile-username">Korisnik</h2>
+            <div class="profile-email" id="profile-email">email@primjer.com</div>
+            <div class="profile-info">
+                <div><b>Član od:</b> <span id="profile-joined">2024</span></div>
+                <div><b>Broj oglasa:</b> <span id="profile-ads">5</span></div>
+            </div>
+            <button class="profile-edit-btn" id="edit-profile">Uredi profil</button>
+            <button type="button" class="profile-edit-btn" id="back-to-main">Natrag na početnu</button>
+        </div>
+        <div class="profile-friends-section profile-friends-side">
+            <div class="friends-header-row">
+                <span class="friends-title-border"><b>Prijatelji</b></span>
+                <button class="add-friend-btn" title="Dodaj prijatelja">
+                    <img src="../../svg/add-friend.svg" alt="Dodaj prijatelja" width="26" height="26">
+                </button>
+            </div>
+            <ul id="profile-friends-list" class="profile-friends-list">
+                <li>Učitavanje...</li>
+            </ul>
+            <div id="friend-requests-section" class="friend-requests-section">
+                <div class="friend-requests-title">Zahtjevi za prijateljstvo</div>
+                <ul id="friend-requests-list" class="friend-requests-list">
+                    <li>Učitavanje...</li>
+                </ul>
+            </div>
+            <!-- Modal za dodavanje prijatelja -->
+            <div id="add-friend-modal" class="add-friend-modal" style="display:none;">
+                <form id="add-friend-form" class="add-friend-form" autocomplete="off">
+                    <h3>Dodaj prijatelja</h3>
+                    <input type="email" id="add-friend-email" placeholder="Upiši email studenta" required autofocus>
+                    <div id="add-friend-error" class="add-friend-error"></div>
+                    <div class="add-friend-form-actions">
+                        <button type="submit" class="add-friend-submit">Pošalji zahtjev</button>
+                        <button type="button" class="add-friend-cancel">Odustani</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Projekt RUP - Sva prava pridržana | Bešker, Rozić, Hodžić, Carić, Vidović</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

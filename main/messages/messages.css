@@ -1,0 +1,29 @@
+/* Messages Page Styles */
+
+.messages-main {
+    max-width: 600px;
+    margin: 60px auto 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 3px 14px 0 rgba(64,99,199,0.12);
+    padding: 36px 32px 32px 32px;
+    text-align: center;
+}
+
+.messages-title {
+    color: #4063c7;
+    margin-bottom: 18px;
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.messages-placeholder {
+    color: #25408f;
+    font-size: 1.13rem;
+    margin-top: 18px;
+    background: #e0e7ff;
+    border-radius: 12px;
+    padding: 22px 18px;
+    box-shadow: 0 2px 8px 0 rgba(64,99,199,0.08);
+}

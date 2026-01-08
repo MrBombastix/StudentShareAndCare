@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>StudentShare&Care - Geolokacija</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../circles.css">
+    <link rel="stylesheet" href="geolocation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="geolocation.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Dekorativni krugovi -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+    <div class="circle circle4"></div>
+    <div class="circle circle5"></div>
+
+    <!-- Sticky kontrole -->
+    <button class="sticky-btn left-btn" id="menu-btn" aria-label="Izbornik" style="padding:22px 30px;">
+        <img src="../svg/menu.svg" alt="Izbornik" style="width:28px; height:28px;">
+    </button>
+    <button class="sticky-btn right-btn" id="notifications-btn" style="padding:22px 30px;">
+        <img src="../svg/bells.svg" alt="Obavijesti" style="width:28px; height:28px;"><span class="badge">3</span>
+    </button>
+
+    <!-- Notifikacijski dropdown -->
+    <div class="notif-dropdown" id="notif-dropdown">
+        <ul>
+            <li>Nova poruka od Ivana</li>
+            <li>Novi komentar na vaš oglas</li>
+            <li>Sustavna obavijest</li>
+        </ul>
+    </div>
+
+    <!-- Side menu -->
+    <div class="side-menu" id="side-menu">
+        <div class="side-menu-decor"></div>
+        <button id="close-menu">×</button>
+        <!-- Slika korisnika -->
+        <img src="../pictures/selfie.jpg" alt="Profilna slika" class="side-menu-avatar" style="width: 92px; height: 92px; border-radius: 50%; object-fit: cover; margin: 32px auto 0 auto; display: block; box-shadow: 0 2px 12px 0 rgba(64,99,199,0.10);">
+        <div class="side-menu-greeting">Dobrodošli, Korisnik!</div>
+        <ul>
+            <li><a href="profile/profile.html"><img src="../svg/user.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Moj profil</a></li>
+            <li><a href="ads/ads.html"><img src="../svg/list-check.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Moji oglasi</a></li>
+            <li><a href="messages/messages.html"><img src="../../svg/messages.svg" alt="Poruke" width="20"> Poruke</a></li>
+            <li><a href="settings/settings.html"><img src="../svg/settings.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Postavke</a></li>
+            <li><a href="geolocation.html"><img src="../svg/marker.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Geolokacija</a></li>
+            <li><button class="logout-btn" id="logout-btn"><img src="../svg/user-logout.svg" alt="" style="width:20px;vertical-align:middle;margin-right:10px;">Odjava</button></li>
+        </ul>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo-bar">
+        <a href="main.html">
+            <img src="../pictures/logo.png" alt="Student Share&Care" class="main-logo-header">
+        </a>
+    </div>
+
+    <!-- Glavni sadržaj -->
+    <div class="geo-wrapper" style="max-width: 600px; margin: 40px auto 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 3px 14px 0 rgba(64,99,199,0.12); padding: 36px 32px 32px 32px; text-align: center;">
+        <h2 style="color:#4063c7; margin-bottom: 18px;">Vaša geolokacija</h2>
+        <p>Ovdje možete prikazati svoju trenutnu lokaciju na karti i vidjeti koordinate.</p>
+        <button id="get-location-btn" style="margin: 24px 0 18px 0; background: #e0e7ff; color: #25408f; border: 2px solid #4063c7; border-radius: 14px; font-weight: 600; font-size: 1.1rem; padding: 14px 36px; cursor: pointer; box-shadow: 0 3px 14px 0 rgba(64,99,199,0.18); transition: background-color 0.3s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;">Prikaži moju lokaciju</button>
+        <div id="geo-status" style="margin-bottom: 18px; color: #d7263d;"></div>
+        <div id="geo-coords" style="font-size: 1.1rem; color: #4063c7; margin-bottom: 18px;"></div>
+        <div id="geo-map" style="width:100%; height:320px; border-radius: 12px; overflow: hidden; background: #e7edfa;"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Projekt RUP - Sva prava pridržana | Bešker, Rozić, Hodžić, Carić, Vidović</p>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</body>
+</html>

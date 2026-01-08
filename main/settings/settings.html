@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postavke | Student Share&Care</title>
+    <link rel="stylesheet" href="settings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="settings-bg-logo"></div>
+    <div class="settings-container">
+        <h1>Postavke</h1>
+        <form class="settings-form" id="settings-form">
+            <div class="settings-block account">
+                <h2>Postavke računa</h2>
+                <label for="username">Korisničko ime</label>
+                <input type="text" id="username" name="username" placeholder="Vaše korisničko ime" autocomplete="username">
+                <label for="email">Email adresa</label>
+                <input type="email" id="email" name="email" placeholder="Vaš email" autocomplete="email">
+                <label for="change-password">Nova lozinka</label>
+                <input type="password" id="change-password" name="change-password" placeholder="Nova lozinka" autocomplete="new-password">
+                <button type="button" class="settings-btn" id="save-account">Spremi promjene računa</button>
+                <div id="account-message" style="min-height:18px;text-align:center;"></div>
+            </div>
+            <div class="settings-block ads">
+                <h2>Postavke oglasa</h2>
+                <label><input type="checkbox" id="ads-visible" checked> Prikaži moje oglase javno</label>
+                <label><input type="checkbox" id="ads-comments" checked> Dozvoli komentare na moje oglase</label>
+                <label><input type="checkbox" id="ads-auto-renew"> Automatski obnovi oglas nakon isteka</label>
+                <label><input type="checkbox" id="ads-email-contact" checked> Prikaži moju email adresu na oglasima</label>
+            </div>
+            <div class="settings-block notifications">
+                <h2>Obavijesti</h2>
+                <label><input type="checkbox" id="notif-email" checked> Email obavijesti</label>
+                <label><input type="checkbox" id="notif-inapp" checked> Obavijesti u aplikaciji</label>
+                <label><input type="checkbox" id="notif-product-news"> Obavijesti me o novim oglasima</label>
+                <label><input type="checkbox" id="notif-promo"> Prikaži promotivne ponude</label>
+            </div>
+            <div class="settings-block back">
+                <button type="button" class="settings-btn" id="back-to-main">Natrag na početnu</button>
+            </div>
+        </form>
+    </div>
+    <script src="settings.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moji oglasi | Student Share&Care</title>
+    <link rel="stylesheet" href="ads.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../../../circles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Modal styles */
+        /* (All modal-related CSS moved to ads.css) */
+    </style>
+    </head>
+<body id="main-body">
+    <!-- Dekorativni krugovi -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+    <div class="circle circle4"></div>
+    <div class="circle circle5"></div>
+
+    <!-- Sticky kontrole -->
+    <button class="sticky-btn left-btn" id="menu-btn" aria-label="Izbornik">
+        <img src="../../svg/menu.svg" alt="Izbornik" width="28" height="28">
+    </button>
+    <button class="sticky-btn right-btn" id="notifications-btn" aria-label="Obavijesti">
+        <img src="../../svg/bells.svg" alt="Obavijesti" width="28" height="28">
+        <span class="badge">3</span>
+    </button>
+    <!-- Notifikacijski dropdown -->
+    <div class="notif-dropdown" id="notif-dropdown">
+        <ul>
+            <li>Nova poruka od Ivana</li>
+            <li>Novi komentar na vaš oglas</li>
+            <li>Sustavna obavijest</li>
+        </ul>
+    </div>
+    <!-- Side menu -->
+    <div class="side-menu" id="side-menu">
+        <div class="side-menu-decor"></div>
+        <button id="close-menu">×</button>
+        <img src="../../svg/user_question.svg" alt="Profilna slika" class="side-menu-avatar">
+        <div class="side-menu-greeting">Dobrodošli, Korisnik!</div>
+        <ul>
+            <li><a href="../profile/profile.html"><img src="../../svg/user.svg" alt="" width="20"> Moj profil</a></li>
+            <li><a href="ads.html"><img src="../../svg/list-check.svg" alt="" width="20"> Moji oglasi</a></li>
+            <li><a href="../messages/messages.html"><img src="../../svg/messages.svg" alt="Poruke" width="20"> Poruke</a></li>
+            <li><a href="../settings/settings.html"><img src="../../svg/settings.svg" alt="" width="20"> Postavke</a></li>
+            <li><a href="../geolocation.html"><img src="../../svg/marker.svg" alt="" width="20"> Geolokacija</a></li>
+            <li><button class="logout-btn" id="logout-btn"><img src="../../svg/user-logout.svg" alt="" width="20"> Odjava</button></li>
+        </ul>
+    </div>
+
+    <div class="ads-title-row">
+        <h1 class="ads-title-fun">
+            <span>M</span><span>o</span><span>j</span><span>i</span> <span>o</span><span>g</span><span>l</span><span>a</span><span>s</span><span>i</span>
+        </h1>
+        <a href="../main.html" class="back-to-main-btn small-home-btn" title="Početna">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" style="vertical-align:middle;margin-right:6px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 11.5L12 5l9 6.5M5 10.5V19a1 1 0 001 1h3m8-9.5V19a1 1 0 01-1 1h-3m-4 0h4"/>
+            </svg>
+            <span class="home-btn-text">Početna</span>
+        </a>
+    </div>
+
+    <main>
+        <!-- Product lista -->
+        <div id="product-list">
+            <div class="product-card">
+                <img src="" alt="Bilješke iz Matematike 1">
+                <div class="product-info">
+                    <h3>Bilješke iz Matematike 1</h3>
+                    <span class="tag">PMF</span>
+                    <p>Detaljne bilješke s predavanja i vježbi, 2023. godina. Sve što trebaš za prolaz! 📚</p>
+                    <span class="price">Besplatno</span>
+                </div>
+                <span class="delete-icon" title="Obriši oglas">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <rect x="12" y="15" width="16" height="14" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect class="lid" x="10" y="10" width="20" height="6" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect x="16" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="20" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="24" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+            <div class="product-card">
+                <img src="" alt="Kalkulator Casio FX-991EX">
+                <div class="product-info">
+                    <h3>Kalkulator Casio FX-991EX</h3>
+                    <span class="tag">FER</span>
+                    <p>Kao nov, korišten samo na jednom ispitu. Prava studentska legenda!</p>
+                    <span class="price">35 €</span>
+                </div>
+                <span class="delete-icon" title="Obriši oglas">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <rect x="12" y="15" width="16" height="14" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect class="lid" x="10" y="10" width="20" height="6" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect x="16" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="20" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="24" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+            <div class="product-card">
+                <img src="" alt="Bilježnica - Statistika">
+                <div class="product-info">
+                    <h3>Bilježnica - Statistika</h3>
+                    <span class="tag">EFZG</span>
+                    <p>Bilješke s predavanja, sve uredno i šareno!</p>
+                    <span class="price">10 €</span>
+                </div>
+                <span class="delete-icon" title="Obriši oglas">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <rect x="12" y="15" width="16" height="14" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect class="lid" x="10" y="10" width="20" height="6" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect x="16" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="20" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="24" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+            <div class="product-card">
+                <img src="" alt="USB stick 32GB">
+                <div class="product-info">
+                    <h3>USB stick 32GB</h3>
+                    <span class="tag">Oprema</span>
+                    <p>Za sve skripte, zadatke i memeove s faksa! 😂</p>
+                    <span class="price">7 €</span>
+                </div>
+                <span class="delete-icon" title="Obriši oglas">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <rect x="12" y="15" width="16" height="14" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect class="lid" x="10" y="10" width="20" height="6" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect x="16" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="20" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="24" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+            <div class="product-card">
+                <img src="" alt="Šalica Student Share&Care">
+                <div class="product-info">
+                    <h3>Šalica Student Share&Care</h3>
+                    <span class="tag">Promo</span>
+                    <p>Limitirana edicija! Za kavu na faksu ili kod kuće ☕</p>
+                    <span class="price">4 €</span>
+                </div>
+                <span class="delete-icon" title="Obriši oglas">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <rect x="12" y="15" width="16" height="14" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect class="lid" x="10" y="10" width="20" height="6" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect x="16" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="20" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="24" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+            <div class="product-card">
+                <img src="" alt="Marker za podcrtavanje">
+                <div class="product-info">
+                    <h3>Marker za podcrtavanje</h3>
+                    <span class="tag">Pribor</span>
+                    <p>Neonski žut, savršen za skripte i bilješke!</p>
+                    <span class="price">1 €</span>
+                </div>
+                <span class="delete-icon" title="Obriši oglas">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <rect x="12" y="15" width="16" height="14" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect class="lid" x="10" y="10" width="20" height="6" rx="2.5" fill="#e0e7ff" stroke="#4063c7" stroke-width="2"/>
+                            <rect x="16" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="20" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                            <rect x="24" y="19" width="2" height="7" rx="1" fill="#4063c7"/>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <!-- Modal za potvrdu brisanja oglasa (fun, student-friendly, s animacijom opreza) -->
+        <div class="delete-modal" id="delete-modal" style="display:none;">
+            <div class="delete-modal-content" style="max-width: 480px;">
+                <div class="modal-warning-anim" aria-label="Oprez!"></div>
+                <div class="delete-modal-title" style="background:none; white-space:nowrap; border:none; box-shadow:none;">
+                    Jesi li siguran da želiš izbrisati ovaj oglas?
+                </div>
+                <div class="delete-modal-buttons">
+                    <button class="delete-btn-yes">DA</button>
+                    <button class="delete-btn-no">NE</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Projekt RUP - Sva prava pridržana | Bešker, Rozić, Hodžić, Carić, Vidović</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="ads.js"></script>
+</body>
+</html>

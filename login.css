@@ -1,0 +1,149 @@
+#login-modal, #register-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(40,60,90,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* FORMA - zajednički stil */
+#login-form, #register-form {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(64,99,199,0.10);
+  padding: 32px 36px 24px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 320px;
+}
+
+#login-form h2, #register-form h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  color: #4063c7;
+}
+
+/* INPUTI */
+#login-form input[type="email"],
+#register-form input[type="email"] {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1.5px solid #e0e5f2;
+  background: #f7f9fc;
+  outline: none;
+  transition: border 0.2s;
+  margin-bottom: 10px;
+}
+#login-form input[type="password"],
+#login-form input[type="text"],
+#register-form input[type="password"],
+#register-form input[type="text"] {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1.5px solid #e0e5f2;
+  background: #f7f9fc;
+  outline: none;
+  transition: border 0.2s;
+}
+#register-form input[type="text"],
+#register-form input[type="email"] {
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* PASSWORD WRAPPER I OKO */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px; /* Samo ovdje! */
+}
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] {
+  flex: 1 1 0%;
+  padding-right: 38px;
+  box-sizing: border-box;
+  margin-bottom: 0 !important;
+  height: 44px;
+  line-height: 44px;
+  display: block;
+}
+#toggle-password-login,
+#toggle-password-register {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  z-index: 2;
+}
+#toggle-password-login:hover,
+#toggle-password-register:hover {
+  opacity: 1;
+}
+#toggle-password-login img,
+#toggle-password-register img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  filter: grayscale(0.2) brightness(0.9);
+  margin: 0;
+}
+
+/* GUMBI */
+#login-form button[type="submit"],
+#register-form button[type="submit"] {
+  background: #4063c7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#login-form button[type="submit"]:hover,
+#register-form button[type="submit"]:hover {
+  background: #25408f;
+}
+#login-form #close-login,
+#register-form #close-register {
+  background: none;
+  color: #4063c7;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* PORUKE */
+#login-message,
+#register-message {
+  min-height: 18px;
+  color: #d7263d;
+  font-size: 1rem;
+  text-align: center;
+}
